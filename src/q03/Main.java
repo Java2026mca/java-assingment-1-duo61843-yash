@@ -4,41 +4,43 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[][] mat = new int[n][n];
-
-        int num = 1;
+        
+        int[][] a = new int[n][n];
+        
         int top = 0, bottom = n - 1;
         int left = 0, right = n - 1;
+        int num = 1;
 
-        while (num <= n * n) {
-            
-            for (int i = left; i <= right && num <= n * n; i++) mat[top][i] = num++;
+        while (true) {
+            for (int i = left; i <= right; i++) a[top][i] = num++;
             top++;
-        
-            for (int i = top; i <= bottom && num <= n * n; i++) mat[i][right] = num++;
+            if (top > bottom) break;
+
+            for (int i = top; i <= bottom; i++) a[i][right] = num++;
             right--;
-           
-            for (int i = right; i >= left && num <= n * n; i--) mat[bottom][i] = num++;
+            if (left > right) break;
+
+            for (int i = right; i >= left; i--) a[bottom][i] = num++;
             bottom--;
-           
-            for (int i = bottom; i >= top && num <= n * n; i--) mat[i][left] = num++;
+            if (top > bottom) break;
+
+            for (int i = bottom; i >= top; i--) a[i][left] = num++;
             left++;
+            if (left > right) break;
         }
 
-      
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print(mat[i][j]);
-                if (j != n - 1) System.out.print(" ");
+                System.out.print(a[i][j]);
+                if (j < n - 1) System.out.print(" ");
             }
             System.out.println();
         }
 
-        
-        int diagSum = 0;
-        for (int i = 0; i < n; i++) diagSum += mat[i][i];
-        System.out.println("Diagonal: " + diagSum);
+        int sum = 0;
+        for (int i = 0; i < n; i++)
+            sum += a[i][n - 1 - i];
 
-        sc.close();
+        System.out.println("Diagonal: " + sum);
     }
 }
