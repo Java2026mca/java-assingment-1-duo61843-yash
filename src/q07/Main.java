@@ -13,14 +13,13 @@ public class Main {
 
         int swaps = 0;
 
-        // Bubble Sort
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // swap
+        // Correct Bubble Sort (exact expected behavior)
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j < n; j++) {
+                if (arr[j - 1] > arr[j]) {
                     int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = temp;
                     swaps++;
                 }
             }
@@ -32,10 +31,7 @@ public class Main {
             if (i < n - 1) System.out.print(" ");
         }
 
-        // New line and swaps
         System.out.println();
         System.out.println("Swaps: " + swaps);
-
-        sc.close();
     }
 }
