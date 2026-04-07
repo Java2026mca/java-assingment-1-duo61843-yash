@@ -1,52 +1,24 @@
-import java.util.*;
+public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
 
-public class Main {
+    int n = sc.nextInt();
 
-    
-    public static boolean isPrime(int num) {
-        if (num <= 1) return false;
-        for (int i = 2; i * i <= num; i++) {
-            if (num % i == 0) return false;
-        }
-        return true;
-    }
+    for (int i = 0; i < n && sc.hasNextInt(); i++) {
+        int num = sc.nextInt();
 
-   
-    public static boolean isPerfect(int num) {
-        if (num <= 1) return false;
-        int sum = 1; // 1 is always a proper divisor
+        boolean prime = isPrime(num);
+        boolean perfect = isPerfect(num);
 
-        for (int i = 2; i * i <= num; i++) {
-            if (num % i == 0) {
-                sum += i;
-                if (i != num / i) {
-                    sum += num / i;
-                }
-            }
-        }
-
-        return sum == num;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-
-        for (int i = 0; i < n; i++) {
-            int num = sc.nextInt();
-
-            boolean prime = isPrime(num);
-            boolean perfect = isPerfect(num);
-
-            if (prime && perfect) {
-                System.out.println("Both");
-            } else if (prime) {
-                System.out.println("Prime");
-            } else if (perfect) {
-                System.out.println("Perfect");
-            } else {
-                System.out.println("Neither");
-            }
+        if (prime && perfect) {
+            System.out.println("Both");
+        } else if (prime) {
+            System.out.println("Prime");
+        } else if (perfect) {
+            System.out.println("Perfect");
+        } else {
+            System.out.println("Neither");
         }
     }
+
+    sc.close(); 
 }
