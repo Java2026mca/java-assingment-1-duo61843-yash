@@ -1,32 +1,48 @@
 import java.util.*;
+
 public class Main {
-    public static void main(String[] args) throws Exception {
-        Scanner scAll = new Scanner(new String(System.in.readAllBytes()));
-        
-        int n1 = scAll.nextInt(), m1 = scAll.nextInt();
-        int[][] a = new int[n1][m1];
-        for(int i=0;i<n1;i++)
-            for(int j=0;j<m1;j++)
-                a[i][j] = scAll.nextInt();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        int n2 = scAll.nextInt(), m2 = scAll.nextInt();
-        int[][] b = new int[n2][m2];
-        for(int i=0;i<n2;i++)
-            for(int j=0;j<m2;j++)
-                b[i][j] = scAll.nextInt();
+        int n = Integer.parseInt(sc.nextLine().trim());
+        int[][] A = new int[n][n];
+        int[][] B = new int[n][n];
+        int[][] C = new int[n][n];
 
-        int[][] c = new int[n1][m2];
-        for(int i=0;i<n1;i++)
-            for(int j=0;j<m2;j++)
-                for(int k=0;k<m1;k++)
-                    c[i][j] += a[i][k] * b[k][j];
-
-        for(int i=0;i<n1;i++){
-            for(int j=0;j<m2;j++){
-                System.out.print(c[i][j]);
-                if(j<m2-1) System.out.print(" ");
+        // Read matrix A
+        for (int i = 0; i < n; i++) {
+            String[] parts = sc.nextLine().trim().split("\\s+");
+            for (int j = 0; j < n; j++) {
+                A[i][j] = Integer.parseInt(parts[j]);
             }
-            System.out.println();
+        }
+
+        // Read matrix B
+        for (int i = 0; i < n; i++) {
+            String[] parts = sc.nextLine().trim().split("\\s+");
+            for (int j = 0; j < n; j++) {
+                B[i][j] = Integer.parseInt(parts[j]);
+            }
+        }
+
+        // Multiply matrices: C = A × B
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int sum = 0;
+                for (int k = 0; k < n; k++) {
+                    sum += A[i][k] * B[k][j];
+                }
+                C[i][j] = sum;
+            }
+        }
+
+        // Print result
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(C[i][j]);
+                if (j < n - 1) System.out.print(" ");
+            }
+            if (i < n - 1) System.out.println();
         }
     }
 }
