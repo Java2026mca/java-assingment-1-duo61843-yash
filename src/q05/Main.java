@@ -1,16 +1,14 @@
-import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
         String shape = sc.next();
         double area = 0.0;
 
         if (shape.equalsIgnoreCase("circle")) {
             double r = sc.nextDouble();
-            area = 3.14 * r * r;
+            area = Math.PI * r * r; // use precise PI
         } 
         else if (shape.equalsIgnoreCase("rectangle")) {
             double l = sc.nextDouble();
