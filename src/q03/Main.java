@@ -5,20 +5,59 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
 
-        for (int i = 0; i < n; i++) {
-            int val = 1;
+        int[][] mat = new int[n][n];
 
-            for (int j = 0; j <= i; j++) {
-                System.out.print(val);
+        int top = 0, bottom = n - 1;
+        int left = 0, right = n - 1;
+        int num = 1;
 
-                if (j < i) {
-                    System.out.print(" ");
+      
+        while (top <= bottom && left <= right) {
+
+            
+            for (int j = left; j <= right; j++) {
+                mat[top][j] = num++;
+            }
+            top++;
+
+         
+            for (int i = top; i <= bottom; i++) {
+                mat[i][right] = num++;
+            }
+            right--;
+
+          
+            if (top <= bottom) {
+                for (int j = right; j >= left; j--) {
+                    mat[bottom][j] = num++;
                 }
-
-                val = val * (i - j) / (j + 1);
+                bottom--;
             }
 
+         
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    mat[i][left] = num++;
+                }
+                left++;
+            }
+        }
+
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(mat[i][j]);
+                if (j < n - 1) System.out.print(" ");
+            }
             System.out.println();
         }
+
+       
+        int diagSum = 0;
+        for (int i = 0; i < n; i++) {
+            diagSum += mat[i][i];
+        }
+
+        System.out.println("Diagonal: " + diagSum);
     }
 }
