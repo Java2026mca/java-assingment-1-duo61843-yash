@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Read the whole line as postfix expression
+       
         String line = sc.nextLine().trim();
         String[] tokens = line.split("\\s+");
 
@@ -12,10 +12,10 @@ public class Main {
 
         for (String token : tokens) {
             if (token.matches("-?\\d+")) {
-                // number
+              
                 stack.push(Integer.parseInt(token));
             } else {
-                // operator
+              
                 int b = stack.pop();
                 int a = stack.pop();
 
