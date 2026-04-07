@@ -9,7 +9,7 @@ public class Main {
         int[][] B = new int[n][n];
         int[][] C = new int[n][n];
 
-        // Read matrix A
+
         for (int i = 0; i < n; i++) {
             String[] parts = sc.nextLine().trim().split("\\s+");
             for (int j = 0; j < n; j++) {
@@ -17,7 +17,7 @@ public class Main {
             }
         }
 
-        // Read matrix B
+       
         for (int i = 0; i < n; i++) {
             String[] parts = sc.nextLine().trim().split("\\s+");
             for (int j = 0; j < n; j++) {
@@ -25,7 +25,7 @@ public class Main {
             }
         }
 
-        // Multiply matrices: C = A × B
+       
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int sum = 0;
@@ -36,7 +36,7 @@ public class Main {
             }
         }
 
-        // Print result
+      
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print(C[i][j]);
