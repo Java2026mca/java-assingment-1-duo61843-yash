@@ -39,7 +39,7 @@ public class Main {
 
         int sum = 0;
         for (int i = 0; i < n; i++)
-            sum += a[i][n - 1 - i];
+            sum += a[i][i];
 
         System.out.println("Diagonal: " + sum);
     }
