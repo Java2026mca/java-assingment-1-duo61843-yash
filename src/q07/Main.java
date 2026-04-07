@@ -13,17 +13,23 @@ public class Main {
 
         int swaps = 0;
 
-        // Count inversions
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (arr[i] > arr[j]) {
+        // Correct bubble sort (with early stop)
+        for (int i = 0; i < n - 1; i++) {
+            boolean swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+
                     swaps++;
+                    swapped = true;
                 }
             }
-        }
 
-        // Sort array
-        Arrays.sort(arr);
+            if (!swapped) break;
+        }
 
         // Print sorted array
         for (int i = 0; i < n; i++) {
